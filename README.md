@@ -24,6 +24,7 @@ It allows you to add, update, delete, list, and change the status of tasks, savi
 ```bash
 git clone https://github.com/yourusername/task-cli-manager.git
 cd task-cli-manager
+````
 Download and add the Gson library to your project dependencies.
 
 javac -cp gson-2.10.1.jar *.java
