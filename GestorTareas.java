@@ -5,14 +5,17 @@ public class GestorTareas {
     public String archivo = "tareas.json"; // Nombre del archivo JSON donde se guardarán las tareas
 
     public GestorTareas() {
-        this.tareas = new ArrayList<>(); // Inicializa la lista de tareas
-        // Aquí cargas la lista desde JSON al iniciar (o creas lista vacía si no existe archivo)
+        this.tareas = Jsons.cargarTareas(archivo); // Carga tareas desde el archivo JSON al iniciar
     }
 
 
     public void addTarea(String descripcion) {
-       this.tareas.add(new Tareas(descripcion));
-
+        int nuevoId = tareas.stream()
+                .mapToInt(Tareas::getId)
+                .max()
+                .orElse(0) + 1;
+        this.tareas.add(new Tareas(descripcion, nuevoId));
+        Jsons.guardarTareas(tareas, archivo);
     }
 
     public void updateTarea(int id, String descripcion) {
@@ -21,7 +24,6 @@ public class GestorTareas {
                 tareas.get(i).setDescripcion(descripcion);
                 tareas.get(i).setActualizadoen();
                 Jsons.guardarTareas(tareas, archivo);
-                // Aquí podrías guardar cambios en JSON
                 return;
             }
         }
@@ -35,7 +37,6 @@ public class GestorTareas {
                tareas.remove(i);
                Jsons.guardarTareas(tareas, archivo);
 
-                // Aquí podrías guardar cambios en JSON
                 return;
             }
         }
@@ -49,7 +50,6 @@ public class GestorTareas {
                 tareas.get(i).setActualizadoen();
                 Jsons.guardarTareas(tareas, archivo);
 
-                // Aquí podrías guardar cambios en JSON
                 return;
             }
         }
@@ -63,7 +63,6 @@ public class GestorTareas {
                 tareas.get(i).setActualizadoen();
                 Jsons.guardarTareas(tareas, archivo);
 
-                // Aquí podrías guardar cambios en JSON
                 return;
             }
         }

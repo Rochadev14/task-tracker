@@ -13,7 +13,7 @@ public class Tareas {
         String formatted = now.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         return formatted;
     }
-    public Tareas(String descripcion) {
+    public Tareas(String descripcion,int id) {
         this.id =+1;
         this.descripcion = descripcion;
         Status = "todo";
@@ -45,12 +45,22 @@ public class Tareas {
     public String getActualizadoen() {
         return actualizadoen;
     }
-    public void setActualizadoen(String actualizadoen) {
-        this.actualizadoen = actualizadoen;
+    public void setActualizadoen() {
+        this.actualizadoen = aplicarFecha();
 
     }
     public String list() {
         return "ID: " + id + ", Descripcion: " + descripcion + ", Status: " + Status + ", Fecha de Creacion: " + fechaCreacion + ", Actualizado en: " + actualizadoen;
     }
 
+    @Override
+    public String toString() {
+        return "Tareas{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", Status='" + Status + '\'' +
+                ", fechaCreacion='" + fechaCreacion + '\'' +
+                ", actualizadoen='" + actualizadoen + '\'' +
+                '}';
+    }
 }
