@@ -9,7 +9,7 @@ public class GestorTareas {
     }
 
 
-    public void addTarea(String descripcion) {
+    public void addTarea(String descripcion, int id) {
         int nuevoId = tareas.stream()
                 .mapToInt(Tareas::getId)
                 .max()

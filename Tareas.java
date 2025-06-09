@@ -14,7 +14,7 @@ public class Tareas {
         return formatted;
     }
     public Tareas(String descripcion,int id) {
-        this.id =+1;
+        this.id =id;
         this.descripcion = descripcion;
         Status = "todo";
         this.fechaCreacion = aplicarFecha();
